@@ -1,0 +1,16 @@
+<template>
+  <div class="slds-align_absolute-center">
+    <div class="slds-grid slds-wrap slds-grid_align-spread">
+      <template lwc:if={contacts.data}>
+        <template for:each={contacts.data} for:item="contact">
+          <div key={contact.Id}>
+            <c-contact-tile
+              con={contact.Name}
+              class="slds-col slds-var-m-around_small slds-align_absolute-center"
+            ></c-contact-tile>
+          </div>
+        </template>
+      </template>
+    </div>
+  </div>
+</template>

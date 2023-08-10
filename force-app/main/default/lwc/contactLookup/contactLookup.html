@@ -1,0 +1,16 @@
+<template>
+  <lightning-card>
+    <div class="slds-align_absolute-center">
+      <lightning-input
+        type="text"
+        label="Name"
+        onchange={handleChange}
+      ></lightning-input>
+    </div>
+    <div class="slds-align_absolute-center">
+      <div class="slds-grid">
+        <c-contact-list></c-contact-list>
+      </div>
+    </div>
+  </lightning-card>
+</template>
