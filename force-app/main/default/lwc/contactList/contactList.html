@@ -2,10 +2,10 @@
   <div class="slds-align_absolute-center">
     <div class="slds-grid slds-wrap slds-grid_align-spread">
       <template lwc:if={contacts.data}>
-        <template for:each={contacts.data} for:item="contact">
-          <div key={contact.Id}>
+        <template for:each={contacts.data} for:item="con">
+          <div key={con.Id}>
             <c-contact-tile
-              con={contact.Name}
+              contact={con}
               onselect={handleSelect}
               class="slds-col slds-var-m-around_small slds-align_absolute-center"
             ></c-contact-tile>
