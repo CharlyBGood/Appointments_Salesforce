@@ -1,6 +1,6 @@
 public with sharing class ContactController {
-  public static List<Contact> searchContacts(String searchText) {
-    try {
+  @AuraEnabled(cacheable=true)
+  public static List<Contact> searchContacts(String searchText) { 
       String likeValue = '%' + searchText + '%';
       return [
         SELECT Id, Name
@@ -8,12 +8,9 @@ public with sharing class ContactController {
         WHERE Name LIKE :likeValue
         WITH SECURITY_ENFORCED
       ];
-    } catch (Exception e) {
-      throw new AuraHandledException(e.getMessage());
-    }
   }
-  @AuraEnabled(cacheable=true)
-  public static List<Contact> getContacts() {
-    return [SELECT Id, Name FROM Contact WITH SECURITY_ENFORCED LIMIT 21];
-  }
+  // @AuraEnabled(cacheable=true)
+  // public static List<Contact> getContacts() {
+  //   return [SELECT Id, Name FROM Contact WITH SECURITY_ENFORCED LIMIT 21];
+  // }
 }

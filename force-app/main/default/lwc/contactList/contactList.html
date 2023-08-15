@@ -1,7 +1,14 @@
 <template>
   <div class="slds-align_absolute-center">
+    <lightning-input
+      type="text"
+      label="Name"
+      onchange={handleChange}
+    ></lightning-input>
+  </div>
+  <div class="slds-align_absolute-center">
     <div class="slds-grid slds-wrap slds-grid_align-spread">
-      <template lwc:if={contacts.data}>
+      <template if:true={contacts.data}>
         <template for:each={contacts.data} for:item="con">
           <div key={con.Id}>
             <c-contact-tile
