@@ -1,5 +1,55 @@
 <template>
-  <lightning-card>
-    <c-contact-lookup></c-contact-lookup>
+  <lightning-card
+    class="slds-form-element__control slds-card slds-grid slds-grid_vertical slds-gutters slds-align_absolute-center"
+    title="Set Appointments"
+    icon-name="custom:custom14"
+  >
+    <lightning-record-edit-form
+      object-api-name={objApiName}
+      onsuccess={handleSuccess}
+      class="slds-form-element"
+    >
+      <lightning-messages> </lightning-messages>
+      <div class="slds-col">
+        <lightning-input-field
+          field-name="Name"
+          onchange={handleApptChange}
+          required="true"
+        ></lightning-input-field>
+        <lightning-input-field
+          field-name={date}
+          required="true"
+        ></lightning-input-field>
+        <div class="slds-grid slds-gutters">
+          <div class="slds-col slds-size_1-of-2">
+            <lightning-input-field
+              field-name={duration}
+              required="true"
+            ></lightning-input-field>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <div class="slds-grid slds-grid_vertical-align-end">
+              <lightning-input-field
+                field-name={contact}
+                required="true"
+                type="lookup"
+              ></lightning-input-field>
+              <c-add-contact-button
+                onaddcontact={handleContactCreated}
+              ></c-add-contact-button>
+            </div>
+          </div>
+        </div>
+        <div class="slds-grid slds-grid_align-end">
+          <lightning-button
+            class="slds-var-m-right_xx-small"
+            type="submit"
+            name="submit"
+            label="Save"
+            variant="brand"
+          ></lightning-button>
+        </div>
+      </div>
+    </lightning-record-edit-form>
   </lightning-card>
 </template>

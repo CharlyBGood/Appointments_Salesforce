@@ -1,16 +1,53 @@
 <template>
-  <lightning-card>
-    <div class="slds-align_absolute-center">
-      <lightning-input
-        type="text"
-        label="Name"
-        onchange={handleChange}
-      ></lightning-input>
-    </div>
-    <div class="slds-align_absolute-center">
-      <div class="slds-grid">
-        <c-contact-list></c-contact-list>
-      </div>
-    </div>
-  </lightning-card>
+  <div class="">
+    <lightning-input
+      type="search"
+      name="Contact"
+      label="Contact"
+      onchange={handleChange}
+      value={value}
+    ></lightning-input>
+  </div>
+  <div class="">
+    <table
+      class="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered"
+      aria-label="Example headless table of Contacts"
+    >
+      <thead class="slds-assistive-text">
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Contact Name">Contact Name</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template if:true={showList}>
+          <template for:each={contacts.data} for:item="con">
+            <tr class="slds-hint-parent" key={con.Id}>
+              <th data-label="Contact Name" scope="row">
+                <div class="slds-truncate" title={con.Name}>
+                  <c-contact-tile
+                    contact={con}
+                    onselect={handleSelect}
+                    class="slds-col"
+                  ></c-contact-tile>
+                </div>
+              </th>
+            </tr>
+          </template>
+        </template>
+        <template if:false={addContact}>
+          <tr class="slds-hint-parent">
+            <th data-label="Add Contact" scope="row">
+              <div class="slds-truncate" title="Add Contact">
+                <c-add-contact-button
+                  onaddcontact={handleNewContact}
+                ></c-add-contact-button>
+              </div>
+            </th>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
 </template>

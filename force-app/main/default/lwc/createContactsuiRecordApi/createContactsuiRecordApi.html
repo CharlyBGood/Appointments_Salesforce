@@ -1,0 +1,22 @@
+<template>
+  <lightning-card title="Add New Contact" class="slds-var-p-around_medium">
+    <div>
+      <lightning-input
+        label="Name"
+        onchange={handleNameChange}
+        class="slds-var-m-around_small"
+      ></lightning-input>
+      <div
+        class="slds-grid slds-grid_align-end slds-icon_container slds-var-p-around_medium"
+      >
+        <lightning-button
+          class="slds-button_brand slds-hide"
+          icon-name="utility:adduser"
+          label="Save"
+          variant="brand"
+          onclick={createContact}
+        ></lightning-button>
+      </div>
+    </div>
+  </lightning-card>
+</template>

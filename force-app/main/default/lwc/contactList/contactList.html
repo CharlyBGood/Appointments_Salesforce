@@ -1,24 +1,26 @@
 <template>
-  <div class="slds-align_absolute-center">
-    <lightning-input
-      type="text"
-      label="Name"
-      onchange={handleChange}
-    ></lightning-input>
-  </div>
-  <div class="slds-align_absolute-center">
-    <div class="slds-grid slds-wrap slds-grid_align-spread">
-      <template if:true={contacts.data}>
-        <template for:each={contacts.data} for:item="con">
-          <div key={con.Id}>
-            <c-contact-tile
-              contact={con}
-              onselect={handleSelect}
-              class="slds-col slds-var-m-around_small slds-align_absolute-center"
-            ></c-contact-tile>
-          </div>
-        </template>
-      </template>
+  <lightning-card>
+    <div class="slds-align_absolute-center">
+      <lightning-input
+        type="text"
+        label="Name"
+        onchange={handleChange}
+      ></lightning-input>
     </div>
-  </div>
+    <div class="slds-align_absolute-center">
+      <div class="slds-grid slds-wrap slds-grid_vertical">
+        <template if:true={contacts.data}>
+          <template for:each={contacts.data} for:item="con">
+            <div key={con.Id}>
+              <c-contact-tile
+                contact={con}
+                onselect={handleSelect}
+                class="slds-col slds-align_absolute-center"
+              ></c-contact-tile>
+            </div>
+          </template>
+        </template>
+      </div>
+    </div>
+  </lightning-card>
 </template>
